@@ -2,7 +2,7 @@ import fitz
 from PIL import Image
 import pytesseract
 import io
-
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 def extract_text_from_pdf(pdf_path):
     document = fitz.open(pdf_path)
@@ -19,11 +19,8 @@ def extract_text_from_pdf(pdf_path):
 
         else:
             pix = page.get_pixmap()
-
             image = Image.open(io.BytesIO(pix.tobytes()))
-
             ocr_text = pytesseract.image_to_string(image)
-
             extracted_text += ocr_text + "\n"
 
     return extracted_text
@@ -31,7 +28,5 @@ def extract_text_from_pdf(pdf_path):
 
 def extract_text_from_image(image_path):
     image = Image.open(image_path)
-
     text = pytesseract.image_to_string(image)
-
     return text
