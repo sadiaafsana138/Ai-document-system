@@ -1,6 +1,6 @@
 venv/
 __pycache__/
 *.pyc
-data/raw/*.pdf
 storage/
 .env
+AI_Document_System_Learning_Guide.pdf
